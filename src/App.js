@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     searchImages(getRandomAnimal());
-  }, []);
+  },[]);
 
   function getRandomAnimal() {
     const randomIndex = Math.floor(Math.random() * animals.length);
