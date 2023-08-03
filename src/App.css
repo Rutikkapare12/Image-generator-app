@@ -112,13 +112,19 @@ form {
     border-radius: 5px;
     cursor: pointer;
 }
-.show-more-button.hide {
+.hide {
   display: none;
 }
 
 .loading {
   font-size: 22rem;
   text-align: center;
+}
+
+.message {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 2rem;
 }
 
 @media screen and (max-width:768px) {

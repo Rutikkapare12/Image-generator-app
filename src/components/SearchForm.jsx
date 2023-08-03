@@ -1,7 +1,7 @@
 // SearchForm.js
 import React from "react";
 
-const SearchForm = ({ inputData, setInputData, handleFormSubmit }) => {
+const SearchForm = ({ inputData, setInputData, handleFormSubmit, message }) => {
   return (
     <div className="App">
       <h1>Image-Search-App</h1>
@@ -17,6 +17,7 @@ const SearchForm = ({ inputData, setInputData, handleFormSubmit }) => {
           Search
         </button>
       </form>
+      <p className={message ? "message" : "message hide"}>✖️image does not found!</p>
     </div>
   );
 };

@@ -6,13 +6,14 @@ import Loading from "./components/Loading";
 import SearchForm from "./components/SearchForm";
 import ShowMoreButton from "./components/ShowMoreButton";
 
-const accessKey = "pzIWNL1JIYWapn7fYGkyFDmqjvuj27RT3bBg9kP3VVE";
+const accessKey = "o124NbBiuIPOCwJvCxu5BIJ8wtY2qFD0NNqNhtx2O8Y";
 
 function App() {
   const [inputData, setInputData] = useState("");
   const [page, setPage] = useState(1);
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState(false);
 
   async function searchImages(defaulter) {
     try {
@@ -24,17 +25,25 @@ function App() {
 
       const response = await fetch(url);
       const data = await response.json();
-
+    
       const results = data.results;
+
+      console.log(results);
 
       if (page === 1) {
         setSearchResults([]);
       }
 
+       // Check if there are any search results
+    if (results.length === 0) {
+      setMessage(true);
+      setLoading(true);
+    } else {
       setSearchResults((prevResults) => [...prevResults, ...results]);
       setPage((prevPage) => prevPage + 1);
       setLoading(false);
-      console.log(searchResults);
+      setMessage(false);
+    }
     } catch (error) {
       console.log(error);
       setLoading(true);
@@ -66,6 +75,7 @@ function App() {
         inputData={inputData}
         setInputData={setInputData}
         handleFormSubmit={handleFormSubmit}
+        message={message}
       />
 
       {loading && <Loading />}
@@ -78,7 +88,7 @@ function App() {
         </div>
       )}
 
-      <ShowMoreButton inputData={inputData} handleShowMore={handleShowMore} />
+      <ShowMoreButton inputData={inputData} handleShowMore={handleShowMore} message={message} />
     </>
   );
 }
