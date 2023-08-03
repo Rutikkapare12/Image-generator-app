@@ -52,6 +52,7 @@ function App() {
 
   useEffect(() => {
     searchImages(getRandomAnimal());
+    // eslint-disable-next-line
   },[]);
 
   function getRandomAnimal() {
