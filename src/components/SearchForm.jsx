@@ -1,7 +1,9 @@
 // SearchForm.js
 import React from "react";
+import { useGlobalContext } from "../context/ContextApi";
 
-const SearchForm = ({ inputData, setInputData, handleFormSubmit, message }) => {
+const SearchForm = () => {
+  const { inputData, setInputData, handleFormSubmit, message } = useGlobalContext()
   return (
     <div className="App">
       <h1>Image-Search-App</h1>
